@@ -14,7 +14,7 @@ $result = '
 foreach ($rows as $row) {
 	$result .= '
 		<tr>
-			<td>'.++$i.'.</td><td> <a href="http://'.$row->domain.'" target="blank">'.$row->domain.'</a></td>
+			<td>'.++$i.'.</td><td> <a href="https://'.$row->domain.'" target="blank">'.$row->domain.'</a> <i class="right floated external icon"></i></td>
 		</tr>';
 }
 $result .= '</tbody>

@@ -243,7 +243,7 @@ if(($_POST["action"]!='Edit') && $_POST["action"]!='Add New') {
                     $income += $row->amount * $arr[$row->cycle];
                 }
                 echo '<tr class="'.$row->status.''.$overdue.'" row-id="'.$row->id.'">';
-                echo '<td>'.$row->domain.'</td>';
+                echo '<td class="ftd">'.$row->domain.'<a href="https://whois.com/whois/'.$row->domain.'" target="_blank"><i class="ui external icon"></i></a></td>';
                 echo '<td>'.$row->info.'</td>';
                 echo '<td>'.$row->amount.'</td>';
                 echo '<td>'.$row->start_date.'</td>';
@@ -294,6 +294,15 @@ if(($_POST["action"]!='Edit') && $_POST["action"]!='Add New') {
         }
         .overdue{ background-color: #ffe59e !important }
         .Suspended{ background-color: #ff9e9e !important }
+        .ftd{
+            position: relative;
+        }
+        .ui.icon{
+            color: green;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
     <script type="text/javascript">
     $(document).ready(function() {
