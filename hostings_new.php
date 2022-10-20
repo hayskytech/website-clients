@@ -243,7 +243,7 @@ if(($_POST["action"]!='Edit') && $_POST["action"]!='Add New') {
                     $income += $row->amount * $arr[$row->cycle];
                 }
                 echo '<tr class="'.$row->status.''.$overdue.'" row-id="'.$row->id.'">';
-                echo '<td class="ftd">'.$row->domain.'<a href="https://whois.com/whois/'.$row->domain.'" target="_blank"><i class="ui external icon"></i></a></td>';
+                echo '<td class="ftd"><a href="https://'.$row->domain.'" target="_blank">'.$row->domain.'</a><a href="https://whois.com/whois/'.$row->domain.'" target="_blank"><i class="ui external icon"></i></a></td>';
                 echo '<td>'.$row->info.'</td>';
                 echo '<td>'.$row->amount.'</td>';
                 echo '<td>'.$row->start_date.'</td>';
