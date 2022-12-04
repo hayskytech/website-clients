@@ -20,10 +20,3 @@ add_action('manage_'.$post_type.'_posts_custom_column', function($column_key, $p
         echo get_post_meta($post_id, "end_date", true);
     }
 }, 10, 2);
-
-?>
-<?php
-/* Powered By Haysky Code Generator: KEY
-[["text","amount"],["date","start_date"],["date","end_date"],["submit","Extra Post Columns"]]
-*/
-?>
