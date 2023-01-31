@@ -10,37 +10,10 @@
  */
 //$wpdb->show_errors(); $wpdb->print_error();
 
-add_action( "init",function(){
-	// Set labels for website
-	$labels = array(
-		"name" => "Websites",
-		"singular_name" => "Website",
-		"add_new"	=> "Add Website",
-		"add_new_item" => "Add New Website",
-		"all_items" => "All Websites",
-		"edit_item" => "Edit Website",
-		"new_item" => "New Website",
-		"view_item" => "View Website",
-		"search_items" => "Search Websites",
-	);
-	// Set Options for website
-	$args = array(	
-		"public" => true,
-		"label"		 => "Websites",
-		"labels"		=> $labels,
-		"description" => "Websites custom post type.",
-		"menu_icon"		=> "dashicons-admin-site-alt3",	
-		"supports"	 => array( "title", "editor", "thumbnail"),
-		"capability_type" => "post",
-		"publicly_queryable"	=> true,
-		"exclude_from_search" => false
-	);
-	register_post_type("website", $args);
-	
+add_shortcode('website_portfolio',function(){ include 'portfolio.php'; });
+
+add_action('admin_menu' , function(){
+    add_menu_page('Hs Hostings','Hs Hostings','manage_options', 'hs_hostings', 'hs_hostings_tah', 'dashicons-admin-users','2');
 });
 
-include 'extra_columns.php';
-include 'meta_boxes.php';
-include 'quick_edit_fields.php';
-
-add_shortcode('website_portfolio',function(){ include 'portfolio.php'; });
+function hs_hostings_tah(){ include 'hostings_new.php'; }

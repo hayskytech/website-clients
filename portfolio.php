@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/table.min.css">
 <?php
 global $wpdb;
-// $rows = $wpdb->get_results("SELECT portfolio,domain,info,end_date FROM hostings WHERE portfolio != 'None'");
+$rows = $wpdb->get_results("SELECT portfolio,domain,info,end_date FROM hostings WHERE portfolio != 'None' ORDER BY start_date DESC");
 $args = array(
 		'post_type'	  => 'website',
 		'post_status'	=> 'publish',
@@ -9,15 +9,15 @@ $args = array(
 		'orderby' => 'date',
 		'order' => 'ASC',
 	);
-$webs = get_posts($args);
+// $webs = get_posts($args);
 echo '<div class="website-portfolio">';
-foreach ($webs as $web) {
-	// if($row->end_date < date('Y-m-d')){
-		// continue;
-	// }
+foreach ($rows as $web) {
+	if($web->end_date < date('Y-m-d')){
+		continue;
+	}
 	echo '
 		<div class="item">
-			<div class="link">'.++$i.') <a href="'.$web->post_title.'" title="'.$web->post_title.'" target="blank">'.end(explode('//',$web->post_title)).'</a> <i class="right floated external icon"></i>
+			<div class="link">'.++$i.') <a href="https://'.$web->domain.'" title="'.$web->domain.'" target="blank">'.end(explode('//',$web->domain)).'</a> <i class="right floated external icon"></i>
 			</div>
 		</div>';
 }
@@ -28,6 +28,9 @@ echo '<pre style="clear:both">';
 echo '</pre>';
 ?>
 <style type="text/css">
+	.website-portfolio{
+		margin-top: 20px;
+	}
 	#maintable td{
 		font-family: Arial !important;
 	}
@@ -43,7 +46,7 @@ echo '</pre>';
 	}
 	.website-portfolio > .item{
 		display: inline-block;
-		width: 25%;
+		width: 33.33%;
 		float: left;
 	}
 	.website-portfolio .link{
