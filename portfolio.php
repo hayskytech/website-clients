@@ -10,7 +10,8 @@ $args = array(
 		'order' => 'ASC',
 	);
 // $webs = get_posts($args);
-echo '<div class="website-portfolio">';
+echo '<h2 id="port-title" style="text-align:center">Websites designed by Haysky</h2>
+<div class="website-portfolio">';
 foreach ($rows as $web) {
 	if($web->end_date < date('Y-m-d')){
 		continue;
@@ -28,7 +29,7 @@ echo '<pre style="clear:both">';
 echo '</pre>';
 ?>
 <style type="text/css">
-	.website-portfolio{
+	#port-title{
 		margin-top: 20px;
 	}
 	#maintable td{
