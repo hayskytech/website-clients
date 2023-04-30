@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/table.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
 <?php
 global $wpdb;
-$rows = $wpdb->get_results("SELECT portfolio,domain,info,end_date FROM hostings WHERE portfolio != 'None' ORDER BY start_date DESC");
+$rows = $wpdb->get_results("SELECT id,portfolio,domain,info,end_date FROM hostings WHERE portfolio != 'None' ORDER BY start_date DESC");
 $args = array(
 		'post_type'	  => 'website',
 		'post_status'	=> 'publish',
@@ -18,7 +19,8 @@ foreach ($rows as $web) {
 	}
 	echo '
 		<div class="item">
-			<div class="link">'.++$i.') <a href="https://'.$web->domain.'" title="'.$web->domain.'" target="blank">'.end(explode('//',$web->domain)).'</a> <i class="right floated external icon"></i>
+			<div class="link">'.++$i.') <a href="https://'.$web->domain.'" title="'.$web->domain.'" target="blank">'.end(explode('//',$web->domain)).'</a> 
+			<a href="'.site_url().'/poster?web='.$web->id.'" target="_blank"><i class="right floated external icon"></i></a>
 			</div>
 		</div>';
 }
@@ -29,6 +31,9 @@ echo '<pre style="clear:both">';
 echo '</pre>';
 ?>
 <style type="text/css">
+	.external.icon{
+		float: right;
+	}
 	#port-title{
 		margin-top: 20px;
 	}

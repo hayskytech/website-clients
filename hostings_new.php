@@ -246,9 +246,9 @@ if(($_POST["action"]!='Edit') && $_POST["action"]!='Add New') {
 				echo '<td class="ftd"><a href="https://'.$row->domain.'" target="_blank">'.$row->domain.'</a>';
 				$msg = '*'.$row->domain.'*
 Expiry: '.$row->end_date.'
-Renewal: *₹'.$row->amount.' for '.$row->cycle.'*';
+Renewal: *₹3000 for '.$row->cycle.'*';
 				$url = 'https://api.whatsapp.com/send/?phone='.$row->phone.'&text='.urlencode($msg);
-					?>
+				?>
 				<a href="https://whois.com/whois/<?php echo $row->domain ?>" target="_blank"><i class="ui external icon"></i></a>
 				<a href="<?php echo $url ?>" target="_blank"><i class="ui large whatsapp icon"></i></a>
 				</td>
@@ -313,7 +313,7 @@ Renewal: *₹'.$row->amount.' for '.$row->cycle.'*';
 			right: 10px;
 		}
 		.ui.whatsapp{
-			right: 40px;
+			right: 35px;
 
 		}
 	</style>

@@ -17,3 +17,5 @@ add_action('admin_menu' , function(){
 });
 
 function hs_hostings_tah(){ include 'hostings_new.php'; }
+
+add_shortcode('website_poster',function($args){ include 'website_poster.php'; });
